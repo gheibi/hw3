@@ -7,22 +7,22 @@
 using namespace std;
 
 //---------------Begin 2-----------------------------------------
-double Nmean,Nvar;
-  void random_number(double*x, int N){
+void random_number(double*x,const int N){
       for (int i=0; i<N; i++)
          x[i]= double (rand())/RAND_MAX;    
   }
   
-  void mean_variance (double*x, int N, double & mean,double & var){
-      for (int i=0; i>=N; i++){
-         Nmean+=x[i];
+  void mean_variance (double * x,const int N, double & mean,double & var){
+
+      for (int i=0; i<N; i++){
+         mean+=x[i];
       }
-      mean=Nmean/N;
-      
-      for (int i=0; i>=N; i++){
-	 Nvar+=pow(x[i]-mean,2);
+      mean=mean/N;
+    
+      for (int i=0; i<N; i++){
+	 var+=pow(x[i]-mean,2);
       } 
-      var=Nvar/N;
+      var=var/N;
   }
 //--------------End 2-----------------------------------------
 
@@ -32,7 +32,7 @@ int main(){
    double mean, var;
 
 //--------------Begin 3-----------------------------------------
-   srand (time(NULL));
+   srand (time(NULL));  
    random_number(p,N);
    mean_variance(p,N,mean,var);
    for(int i=0; i<N; i++) cout  <<"random_number["<<i<<"]"<<"\t"<< p[i] << endl;
